@@ -72,7 +72,8 @@ fun App() {
             Spacer(Modifier.padding(top = 50.dp))
             Section("EXPERIENCE", sectionPositions) { Experience() }
             Spacer(Modifier.padding(top = 50.dp))
-            Section("CONTACT", sectionPositions) {  }
+            Section("CONTACT", sectionPositions) { SocialLinks() }
+            Resume()
         }
     }
 }

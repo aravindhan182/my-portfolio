@@ -2,7 +2,6 @@ package com.aravindh.website
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,7 +18,6 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
@@ -32,6 +30,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
@@ -40,11 +40,18 @@ import androidx.compose.ui.unit.sp
 import aravindhwebsite.composeapp.generated.resources.Res
 import aravindhwebsite.composeapp.generated.resources._19197149
 import aravindhwebsite.composeapp.generated.resources.closeup_hands_business_meeting
-import aravindhwebsite.composeapp.generated.resources.compose_multiplatform
+import aravindhwebsite.composeapp.generated.resources.icons8_github_48
+import aravindhwebsite.composeapp.generated.resources.icons8_github_64
+import aravindhwebsite.composeapp.generated.resources.icons8_mail_94
+import aravindhwebsite.composeapp.generated.resources.instagram
+import aravindhwebsite.composeapp.generated.resources.linkedin
 import aravindhwebsite.composeapp.generated.resources.tracking_icon
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
+import kotlinx.browser.document
+import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+import org.w3c.dom.HTMLAnchorElement
 
 @Composable
 fun HomePage(onNavClick: (String) -> Unit) {
@@ -141,7 +148,10 @@ fun AnimatedTexts() {
             ) {
                 Text(
                     "RESUME", fontWeight = FontWeight.SemiBold,
-                    fontSize = 40.sp
+                    fontSize = 40.sp,
+                    modifier = Modifier.clickable {
+                        downloadResume()
+                    }
                 )
             }
         }
@@ -241,6 +251,7 @@ fun About() {
                 Row {
                     Text(
                         text = "Kotlin",
+                        color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
                             .padding(8.dp)
@@ -248,6 +259,7 @@ fun About() {
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
                         text = "XML",
+                        color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
                             .padding(8.dp)
@@ -255,6 +267,7 @@ fun About() {
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
                         text = "Jetpack compose",
+                        color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
                             .padding(8.dp)
@@ -262,6 +275,7 @@ fun About() {
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
                         text = "Ktor API Integration",
+                        color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
                             .padding(8.dp)
@@ -269,6 +283,7 @@ fun About() {
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
                         text = "KMP",
+                        color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
                             .padding(8.dp)
@@ -278,6 +293,7 @@ fun About() {
                 Row {
                     Text(
                         text = "Sqlite",
+                        color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
                             .padding(8.dp)
@@ -285,6 +301,7 @@ fun About() {
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
                         text = "Postgres",
+                        color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
                             .padding(8.dp)
@@ -346,7 +363,7 @@ fun Projects() {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    ){
+    ) {
         Text(
             "PROJECTS", fontSize = 32.sp, color = Color.White, fontWeight = FontWeight.Bold,
             textDecoration = TextDecoration.Underline
@@ -369,7 +386,8 @@ fun Projects() {
                 Image(
                     painter = painterResource(Res.drawable.closeup_hands_business_meeting),
                     contentDescription = null,
-                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally))
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
+                )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
                     "This was my first project in my organization, where I worked on migrating an older version of a POS (Point of Sale) application to a newer, optimized version. Throughout this project, I gained valuable experience in code reusability, performance optimization, and efficient data synchronization.\n" +
@@ -397,7 +415,8 @@ fun Projects() {
                 Image(
                     painter = painterResource(Res.drawable._19197149),
                     contentDescription = null,
-                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally))
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
+                )
             }
             Spacer(modifier = Modifier.padding(8.dp))
             Column(modifier = Modifier.weight(1f)) {
@@ -411,7 +430,8 @@ fun Projects() {
                 Image(
                     painter = painterResource(Res.drawable.tracking_icon),
                     contentDescription = null,
-                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally))
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
+                )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
                     "I worked on representative tracking system project focused on maintaining and bug fixing. This project was fully developed using Android Jetpack components, Kotlin, Google Maps, and Retrofit for API integration. I was responsible for identifying and resolving critical issues, optimizing performance, and enhancing the overall stability of the application.\n" +
@@ -423,5 +443,102 @@ fun Projects() {
 
             }
         }
+    }
+}
+
+@Composable
+fun SocialLinks() {
+
+    val uriHandler = LocalUriHandler.current
+    Column(
+        modifier = Modifier.fillMaxSize().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            "SOCIAL LINKS", fontSize = 32.sp, color = Color.White, fontWeight = FontWeight.Bold,
+            textDecoration = TextDecoration.Underline
+        )
+        Spacer(modifier = Modifier.padding(16.dp))
+        Row(
+            modifier = Modifier.width(600.dp),
+            verticalAlignment = Alignment.Top,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painter = painterResource(Res.drawable.linkedin),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.icons8_github_48),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://github.com/aravindhan182")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.icons8_github_64),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://github.com/aravindh2106")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.instagram),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://www.instagram.com/aravindh_azeal?igsh=MW83ejMzN3AwMDJiZg==")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.icons8_mail_94),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    window.open("mailto:aravindhanathmanathan@gmail.com", "_self")
+                }
+            )
+        }
+    }
+}
+
+fun downloadResume() {
+    val anchor = document.createElement("a") as HTMLAnchorElement
+    anchor.href = "My_resume_compressed.pdf"
+    anchor.download = "Aravindhan_Resume.pdf"
+    document.body?.appendChild(anchor)
+    anchor.click()
+    document.body?.removeChild(anchor)
+}
+
+@Composable
+fun Resume() {
+    val uriHandler = LocalUriHandler.current
+    Column(
+        modifier = Modifier.fillMaxWidth().wrapContentHeight().background(Color.Black)
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(horizontalArrangement = Arrangement.Center) {
+
+            Text("This website is belonging to ", color = Color.White, fontSize = 24.sp)
+            Text(
+                "Aravindhan A",
+                modifier = Modifier.clickable {
+                    uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
+                },
+                color = Color(0xFF1897bc),
+                style = TextStyle(textDecoration = TextDecoration.Underline),
+                fontSize = 24.sp,
+            )
+        }
+        Spacer(modifier = Modifier.padding(8.dp))
+        Text("Be aware of Copy Rights", color = Color.White, fontSize = 24.sp)
     }
 }
