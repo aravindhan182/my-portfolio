@@ -39,18 +39,51 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import aravindhwebsite.composeapp.generated.resources.Res
 import aravindhwebsite.composeapp.generated.resources._19197149
+import aravindhwebsite.composeapp.generated.resources.about
+import aravindhwebsite.composeapp.generated.resources.about_me
 import aravindhwebsite.composeapp.generated.resources.closeup_hands_business_meeting
+import aravindhwebsite.composeapp.generated.resources.contact
+import aravindhwebsite.composeapp.generated.resources.copyrights
+import aravindhwebsite.composeapp.generated.resources.experience
+import aravindhwebsite.composeapp.generated.resources.experience_desc
+import aravindhwebsite.composeapp.generated.resources.experience_year
+import aravindhwebsite.composeapp.generated.resources.home
 import aravindhwebsite.composeapp.generated.resources.icons8_github_48
 import aravindhwebsite.composeapp.generated.resources.icons8_github_64
 import aravindhwebsite.composeapp.generated.resources.icons8_mail_94
 import aravindhwebsite.composeapp.generated.resources.instagram
+import aravindhwebsite.composeapp.generated.resources.jetpack_compose
+import aravindhwebsite.composeapp.generated.resources.kmp
+import aravindhwebsite.composeapp.generated.resources.know_about_me
+import aravindhwebsite.composeapp.generated.resources.kotlin
+import aravindhwebsite.composeapp.generated.resources.ktor
 import aravindhwebsite.composeapp.generated.resources.linkedin
+import aravindhwebsite.composeapp.generated.resources.lspl
+import aravindhwebsite.composeapp.generated.resources.mobile_developer
+import aravindhwebsite.composeapp.generated.resources.my_skills
+import aravindhwebsite.composeapp.generated.resources.name
+import aravindhwebsite.composeapp.generated.resources.pos
+import aravindhwebsite.composeapp.generated.resources.pos_summary
+import aravindhwebsite.composeapp.generated.resources.postgres
+import aravindhwebsite.composeapp.generated.resources.projects
+import aravindhwebsite.composeapp.generated.resources.representative_tracking
+import aravindhwebsite.composeapp.generated.resources.representative_tracking_summary
+import aravindhwebsite.composeapp.generated.resources.resume
+import aravindhwebsite.composeapp.generated.resources.short_summary
+import aravindhwebsite.composeapp.generated.resources.short_summary_2
+import aravindhwebsite.composeapp.generated.resources.spend_smart
+import aravindhwebsite.composeapp.generated.resources.spend_smart_summary
+import aravindhwebsite.composeapp.generated.resources.sqlite
+import aravindhwebsite.composeapp.generated.resources.summary
+import aravindhwebsite.composeapp.generated.resources.this_website_is_belonging_to
 import aravindhwebsite.composeapp.generated.resources.tracking_icon
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
+import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.w3c.dom.HTMLAnchorElement
 
 @Composable
@@ -65,13 +98,19 @@ fun HomePage(onNavClick: (String) -> Unit) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                "ARAVINDHAN A",
+                stringResource(Res.string.name),
                 color = Color.White,
                 fontWeight = FontWeight.Bold,
                 fontSize = 48.sp
             )
             Row(modifier = Modifier.padding(top = 16.dp)) {
-                listOf("HOME", "ABOUT", "EXPERIENCE", "PROJECTS", "CONTACT").forEach { section ->
+                listOf(
+                    stringResource(Res.string.home),
+                    stringResource(Res.string.about),
+                    stringResource(Res.string.experience),
+                    stringResource(Res.string.projects),
+                    stringResource(Res.string.contact)
+                ).forEach { section ->
                     Text(
                         text = section,
                         color = Color.White,
@@ -95,7 +134,7 @@ fun AnimatedTexts() {
 
     var secondTextToDisplay by remember { mutableStateOf("") }
     val secondOriginalText =
-        "A skilled mobile app developer, crafting and managing applications \nto ensure the success of the entire product with finesse."
+        stringResource(Res.string.short_summary_2)
     var secondIndex by remember { mutableStateOf(0) }
 
     var showSecondText by remember { mutableStateOf(false) }
@@ -147,7 +186,7 @@ fun AnimatedTexts() {
                 )
             ) {
                 Text(
-                    "RESUME", fontWeight = FontWeight.SemiBold,
+                    stringResource(Res.string.resume), fontWeight = FontWeight.SemiBold,
                     fontSize = 40.sp,
                     modifier = Modifier.clickable {
                         downloadResume()
@@ -194,12 +233,15 @@ fun About() {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            "ABOUT ME", fontSize = 32.sp, color = Color.White, fontWeight = FontWeight.Bold,
+            stringResource(Res.string.about_me),
+            fontSize = 32.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
             textDecoration = TextDecoration.Underline
         )
         Spacer(modifier = Modifier.padding(16.dp))
         Text(
-            "Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology",
+            stringResource(Res.string.short_summary),
             color = Color.White
         )
         Spacer(modifier = Modifier.padding(16.dp))
@@ -212,37 +254,22 @@ fun About() {
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    "Know about me!",
+                    stringResource(Res.string.know_about_me),
                     fontSize = 24.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
-                    "Greetings! I'm Aravindhan, a dedicated software engineer located in India. \n My expertise spans Android, kotlin, compose, KMP and backend API ktor.",
+                    stringResource(Res.string.summary),
                     color = Color.White
                 )
                 Spacer(modifier = Modifier.padding(8.dp))
-                Text(
-                    "I have a proven track record of crafting high-quality digital solutions, \nfrom creating seamless user interfaces with xml/compose to architecting robust. My focus is always on delivering clean,\n efficient, and scalable code that exceeds expectations.",
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.padding(8.dp))
-                Text(
-                    "Throughout my career, I've had the opportunity to work on a variety of projects, \neach presenting unique challenges and opportunities for growth. \nI thrive on the continuous learning and problem-solving inherent in the tech industry",
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.padding(8.dp))
-                Text(
-                    "Beyond coding, I enjoy staying abreast of the latest technological advancements\n and collaborating with fellow enthusiasts. Interested in discussing \nhow we can collaborate on your next project? Feel free to get in touch. \nLet's transform ideas into reality and make a meaningful impact together",
-                    color = Color.White
-                )
-
             }
             Spacer(modifier = Modifier.padding(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    "My Skills",
+                    stringResource(Res.string.my_skills),
                     fontSize = 24.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold
@@ -250,7 +277,7 @@ fun About() {
                 Spacer(modifier = Modifier.padding(16.dp))
                 Row {
                     Text(
-                        text = "Kotlin",
+                        text = stringResource(Res.string.kotlin),
                         color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
@@ -258,7 +285,7 @@ fun About() {
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
-                        text = "XML",
+                        text = stringResource(Res.string.xml),
                         color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
@@ -266,7 +293,7 @@ fun About() {
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
-                        text = "Jetpack compose",
+                        text = stringResource(Res.string.jetpack_compose),
                         color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
@@ -274,7 +301,7 @@ fun About() {
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
-                        text = "Ktor API Integration",
+                        text = stringResource(Res.string.ktor),
                         color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
@@ -282,7 +309,7 @@ fun About() {
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
-                        text = "KMP",
+                        text = stringResource(Res.string.kmp),
                         color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
@@ -292,7 +319,7 @@ fun About() {
                 Spacer(modifier = Modifier.padding(8.dp))
                 Row {
                     Text(
-                        text = "Sqlite",
+                        text = stringResource(Res.string.sqlite),
                         color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
@@ -300,7 +327,7 @@ fun About() {
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
-                        text = "Postgres",
+                        text = stringResource(Res.string.postgres),
                         color = Color.White,
                         modifier = Modifier
                             .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
@@ -321,7 +348,10 @@ fun Experience() {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            "EXPERIENCE", fontSize = 32.sp, color = Color.White, fontWeight = FontWeight.Bold,
+            stringResource(Res.string.experience),
+            fontSize = 32.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
             textDecoration = TextDecoration.Underline
         )
         Spacer(Modifier.padding(16.dp))
@@ -342,15 +372,23 @@ fun Experience() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Logic soft pvt ltd",
+                        text = stringResource(Res.string.lspl),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold
                     )
                     Spacer(Modifier.padding(4.dp))
-                    Text(text = "Mobile developer", fontSize = 24.sp, color = Color(0xFF2e4053))
-                    Text(text = "Aug 2021 - present", fontSize = 24.sp, color = Color(0xFF2e4053))
+                    Text(
+                        text = stringResource(Res.string.mobile_developer),
+                        fontSize = 24.sp,
+                        color = Color(0xFF2e4053)
+                    )
+                    Text(
+                        text = stringResource(Res.string.experience_year),
+                        fontSize = 24.sp,
+                        color = Color(0xFF2e4053)
+                    )
                     Spacer(Modifier.padding(4.dp))
-                    Text(text = "I worked as a mobile developer designing mobile application and building both crossplatform and native mobile applications")
+                    Text(text = stringResource(Res.string.experience_desc))
                 }
             }
         }
@@ -365,7 +403,10 @@ fun Projects() {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            "PROJECTS", fontSize = 32.sp, color = Color.White, fontWeight = FontWeight.Bold,
+            stringResource(Res.string.projects),
+            fontSize = 32.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
             textDecoration = TextDecoration.Underline
         )
         Spacer(modifier = Modifier.padding(16.dp))
@@ -377,7 +418,7 @@ fun Projects() {
             Column(modifier = Modifier.weight(1f)) {
 
                 Text(
-                    "POS",
+                    stringResource(Res.string.pos),
                     fontSize = 24.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
@@ -390,17 +431,14 @@ fun Projects() {
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
-                    "This was my first project in my organization, where I worked on migrating an older version of a POS (Point of Sale) application to a newer, optimized version. Throughout this project, I gained valuable experience in code reusability, performance optimization, and efficient data synchronization.\n" +
-                            "\n" +
-                            "The new version of the app improved overall functionality and user experience, enabling seamless POS operations.This project fully developed by using Jetpack components, some pages in Jetpack Compose, Room database for managing the data, For API integration used Retrofit. One of the key enhancements was optimizing the synchronization process, making it 3x faster than the previous version. Additionally, I contributed to refining the codebase, improving maintainability, and implementing best practices to ensure long-term scalability",
-                    color = Color.White,
+                    stringResource(Res.string.pos_summary), color = Color.White,
                     modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
                 )
             }
             Spacer(modifier = Modifier.padding(8.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    "SPEND SMART",
+                    stringResource(Res.string.spend_smart),
                     fontSize = 24.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
@@ -408,8 +446,7 @@ fun Projects() {
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
-                    "I developed Spend Smart, a personal finance management app built entirely with Jetpack Compose. This app enables users to allocate budgets, track expenses, and monitor income efficiently, providing a clear financial overview with an intuitive and modern UI. It features budget allocation, expense and income tracking, and real-time insights through visual representations of spending patterns. By working on this project, I deepened my expertise in Jetpack Compose, state management, and database handling, enhancing my ability to develop efficient, scalable, and user-friendly financial applications.",
-                    color = Color.White,
+                    stringResource(Res.string.spend_smart_summary), color = Color.White,
                     modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
                 )
                 Image(
@@ -421,7 +458,7 @@ fun Projects() {
             Spacer(modifier = Modifier.padding(8.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    "REPRESENTATIVE TRACKING",
+                    stringResource(Res.string.representative_tracking),
                     fontSize = 24.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
@@ -434,20 +471,16 @@ fun Projects() {
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
-                    "I worked on representative tracking system project focused on maintaining and bug fixing. This project was fully developed using Android Jetpack components, Kotlin, Google Maps, and Retrofit for API integration. I was responsible for identifying and resolving critical issues, optimizing performance, and enhancing the overall stability of the application.\n" +
-                            "\n" +
-                            "Through this experience, I gained a deep understanding of large-scale system architecture, real-time location tracking, and API efficiency. Additionally, collaborating with cross-functional teams improved my problem-solving skills and ability to work in a fast-paced environment.",
-                    color = Color.White,
+                    stringResource(Res.string.representative_tracking_summary), color = Color.White,
                     modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
                 )
-
             }
         }
     }
 }
 
 @Composable
-fun SocialLinks() {
+fun Contact() {
 
     val uriHandler = LocalUriHandler.current
     Column(
@@ -456,7 +489,10 @@ fun SocialLinks() {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            "SOCIAL LINKS", fontSize = 32.sp, color = Color.White, fontWeight = FontWeight.Bold,
+            stringResource(Res.string.contact),
+            fontSize = 32.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
             textDecoration = TextDecoration.Underline
         )
         Spacer(modifier = Modifier.padding(16.dp))
@@ -527,9 +563,13 @@ fun Resume() {
     ) {
         Row(horizontalArrangement = Arrangement.Center) {
 
-            Text("This website is belonging to ", color = Color.White, fontSize = 24.sp)
             Text(
-                "Aravindhan A",
+                stringResource(Res.string.this_website_is_belonging_to),
+                color = Color.White,
+                fontSize = 24.sp
+            )
+            Text(
+                stringResource(Res.string.name),
                 modifier = Modifier.clickable {
                     uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
                 },
@@ -539,6 +579,6 @@ fun Resume() {
             )
         }
         Spacer(modifier = Modifier.padding(8.dp))
-        Text("Be aware of Copy Rights", color = Color.White, fontSize = 24.sp)
+        Text(stringResource(Res.string.copyrights), color = Color.White, fontSize = 24.sp)
     }
 }

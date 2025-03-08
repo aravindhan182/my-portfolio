@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">HOME</string>
+    <string name="about">ABOUT</string>
+    <string name="projects">PROJECTS</string>
+    <string name="experience">EXPERIENCE</string>
+    <string name="contact">CONTACT</string>
+    <string name="about_me">ABOUT ME</string>
+    <string name="social_links">SOCIAL LINKS</string>
+    <string name="know_about_me">Know about me!</string>
+    <string name="short_summary">Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology</string>
+    <string name="summary">Greetings! I'm Aravindhan, a dedicated software engineer located in India. My expertise spans Android, kotlin, compose, KMP and backend API ktor.I have a proven track record of crafting high-quality digital solutions, from creating seamless user interfaces with xml/compose to architecting robust. \n  My focus is always on delivering clean, efficient, and scalable code that exceeds expectations. Throughout my career, I've had the opportunity to work on a variety of projects, each presenting unique challenges and opportunities for growth. I thrive on the continuous learning and problem-solving inherent in the tech industry Beyond coding,
+        I enjoy staying abreast of the latest technological advancements and collaborating with fellow enthusiasts. Interested in discussing how we can collaborate on your next project? Feel free to get in touch. \n Let's transform ideas into reality and make a meaningful impact together</string>
+    <string name="name">ARAVINDHAN A</string>
+    <string name="iam_aravindh">Hi, I'm Aravindh</string>
+    <string name="short_summary_2">A skilled mobile app developer, crafting and managing applications \n
+to ensure the success of the entire product with finesse.</string>
+    <string name="resume">RESUME</string>
+    <string name="about_me_description">Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology</string>
+    <string name="my_skills">My Skills</string>
+    <string name="kotlin">Kotlin</string>
+    <string name="kmp">KMP</string>
+    <string name="ktor">Ktor API Integration</string>
+    <string name="xml">XML</string>
+    <string name="jetpack_compose">Jetpack compose</string>
+    <string name="sqlite">Sqlite</string>
+    <string name="this_website_is_belonging_to">This website is belonging to </string>
+    <string name="postgres">Postgres</string>
+    <string name="lspl">Logic soft pvt ltd</string>
+    <string name="mobile_developer">Mobile developer</string>
+    <string name="experience_year">Aug 2021 - present</string>
+    <string name="experience_desc">I worked as a mobile developer designing mobile application and building both crossplatform and native mobile applications</string>
+    <string name="pos">POS</string>
+    <string name="pos_summary">This was my first project in my organization, where I worked on migrating an older version of a POS (Point of Sale) application to a newer, optimized version. Throughout this project, I gained valuable experience in code reusability, performance optimization, and efficient data synchronization.\n The new version of the app improved overall functionality and user experience, enabling seamless POS operations.This project fully developed by using Jetpack components, some pages in Jetpack Compose, Room database for managing the data, For API integration used Retrofit. One of the key enhancements was optimizing the synchronization process, making it 3x faster than the previous version. Additionally, I contributed to refining the codebase, improving maintainability, and implementing best practices to ensure long-term scalability</string>
+    <string name="spend_smart">SPEND SMART</string>
+    <string name="spend_smart_summary">I developed Spend Smart, a personal finance management app built entirely with Jetpack Compose. This app enables users to allocate budgets, track expenses, and monitor income efficiently, providing a clear financial overview with an intuitive and modern UI. It features budget allocation, expense and income tracking, and real-time insights through visual representations of spending patterns. By working on this project, I deepened my expertise in Jetpack Compose, state management, and database handling, enhancing my ability to develop efficient, scalable, and user-friendly financial applications.</string>
+    <string name="representative_tracking">REPRESENTATIVE TRACKING</string>
+    <string name="representative_tracking_summary">I worked on representative tracking system project focused on maintaining and bug fixing. This project was fully developed using Android Jetpack components, Kotlin, Google Maps, and Retrofit for API integration. I was responsible for identifying and resolving critical issues, optimizing performance, and enhancing the overall stability of the application. \n Through this experience, I gained a deep understanding of large-scale system architecture, real-time location tracking, and API efficiency. Additionally, collaborating with cross-functional teams improved my problem-solving skills and ability to work in a fast-paced environment.</string>
+    <string name="copyrights">Be aware of Copy Rights</string>
+</resources>

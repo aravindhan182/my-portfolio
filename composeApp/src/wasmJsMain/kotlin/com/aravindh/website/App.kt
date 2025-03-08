@@ -32,7 +32,15 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.unit.dp
+import aravindhwebsite.composeapp.generated.resources.Res
+import aravindhwebsite.composeapp.generated.resources.about
+import aravindhwebsite.composeapp.generated.resources.contact
+import aravindhwebsite.composeapp.generated.resources.experience
+import aravindhwebsite.composeapp.generated.resources.projects
+
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
+
 
 @Composable
 fun App() {
@@ -91,13 +99,13 @@ fun App() {
             }
 
             Spacer(Modifier.padding(top = 50.dp))
-            Section("ABOUT", sectionPositions) { About() }
+            Section(stringResource(Res.string.about), sectionPositions) { About() }
             Spacer(Modifier.padding(top = 50.dp))
-            Section("PROJECTS", sectionPositions) { Projects() }
+            Section(stringResource(Res.string.projects), sectionPositions) { Projects() }
             Spacer(Modifier.padding(top = 50.dp))
-            Section("EXPERIENCE", sectionPositions) { Experience() }
+            Section(stringResource(Res.string.experience), sectionPositions) { Experience() }
             Spacer(Modifier.padding(top = 50.dp))
-            Section("CONTACT", sectionPositions) { SocialLinks() }
+            Section(stringResource(Res.string.contact), sectionPositions) { Contact() }
             Resume()
         }
     }
