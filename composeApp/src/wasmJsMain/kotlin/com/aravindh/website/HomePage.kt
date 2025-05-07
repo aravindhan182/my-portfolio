@@ -495,7 +495,7 @@ fun Contact() {
         )
         Spacer(modifier = Modifier.padding(16.dp))
         Row(
-            modifier = Modifier.wrapContentWidth(),
+            modifier = Modifier.width(600.dp),
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.Center
         ) {
