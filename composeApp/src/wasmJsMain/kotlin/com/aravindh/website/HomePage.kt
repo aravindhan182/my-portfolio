@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import aravindhwebsite.composeapp.generated.resources.Res
 import aravindhwebsite.composeapp.generated.resources.about
 import aravindhwebsite.composeapp.generated.resources.about_me
+import aravindhwebsite.composeapp.generated.resources.closeup_hands_business_meeting
 import aravindhwebsite.composeapp.generated.resources.contact
 import aravindhwebsite.composeapp.generated.resources.copyrights
 import aravindhwebsite.composeapp.generated.resources.experience
@@ -414,6 +415,11 @@ fun Projects() {
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+                Image(
+                    painter = painterResource(Res.drawable.closeup_hands_business_meeting),
+                    contentDescription = null,
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
