@@ -54,7 +54,6 @@ import aravindhwebsite.composeapp.generated.resources.kmp
 import aravindhwebsite.composeapp.generated.resources.know_about_me
 import aravindhwebsite.composeapp.generated.resources.kotlin
 import aravindhwebsite.composeapp.generated.resources.ktor
-import aravindhwebsite.composeapp.generated.resources.linkedin
 import aravindhwebsite.composeapp.generated.resources.lspl
 import aravindhwebsite.composeapp.generated.resources.mobile_developer
 import aravindhwebsite.composeapp.generated.resources.my_skills
@@ -497,13 +496,13 @@ fun Contact() {
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.Center
         ) {
-            Image(
+          /*  Image(
                 painter = painterResource(Res.drawable.linkedin),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
                 }
-            )
+            )*/
 
             Image(
                 painter = painterResource(Res.drawable.icons8_github_48),

@@ -18,9 +18,6 @@ private object CommonMainDrawable0 {
   public val icons8_github_64: DrawableResource by 
       lazy { init_icons8_github_64() }
 
-  public val linkedin: DrawableResource by 
-      lazy { init_linkedin() }
-
   public val spend_smart: DrawableResource by 
       lazy { init_spend_smart() }
 
@@ -76,17 +73,6 @@ private fun init_icons8_github_64(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/icons8_github_64.xml", -1, -1),
-    )
-)
-
-internal val Res.drawable.linkedin: DrawableResource
-  get() = CommonMainDrawable0.linkedin
-
-private fun init_linkedin(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
-  "drawable:linkedin",
-    setOf(
-      org.jetbrains.compose.resources.ResourceItem(setOf(),
-    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/linkedin.xml", -1, -1),
     )
 )
 
