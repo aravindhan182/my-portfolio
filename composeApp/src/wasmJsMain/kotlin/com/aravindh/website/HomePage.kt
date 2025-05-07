@@ -49,6 +49,7 @@ import aravindhwebsite.composeapp.generated.resources.experience_year
 import aravindhwebsite.composeapp.generated.resources.home
 import aravindhwebsite.composeapp.generated.resources.icons8_github_48
 import aravindhwebsite.composeapp.generated.resources.icons8_github_64
+import aravindhwebsite.composeapp.generated.resources.instagram
 import aravindhwebsite.composeapp.generated.resources.jetpack_compose
 import aravindhwebsite.composeapp.generated.resources.kmp
 import aravindhwebsite.composeapp.generated.resources.know_about_me
@@ -519,14 +520,14 @@ fun Contact() {
                     uriHandler.openUri("https://github.com/aravindh2106")
                 }
             )
-/*
-            Image(
+
+           Image(
                 painter = painterResource(Res.drawable.instagram),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     uriHandler.openUri("https://www.instagram.com/aravindh_azeal?igsh=MW83ejMzN3AwMDJiZg==")
                 }
-            )*/
+            )
 
           /*  Image(
                 painter = painterResource(Res.drawable.icons8_mail_94),

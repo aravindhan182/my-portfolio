@@ -18,6 +18,9 @@ private object CommonMainDrawable0 {
   public val icons8_github_64: DrawableResource by 
       lazy { init_icons8_github_64() }
 
+  public val instagram: DrawableResource by 
+      lazy { init_instagram() }
+
   public val spend_smart: DrawableResource by 
       lazy { init_spend_smart() }
 
@@ -73,6 +76,17 @@ private fun init_icons8_github_64(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/icons8_github_64.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.instagram: DrawableResource
+  get() = CommonMainDrawable0.instagram
+
+private fun init_instagram(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
+  "drawable:instagram",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/instagram.xml", -1, -1),
     )
 )
 
