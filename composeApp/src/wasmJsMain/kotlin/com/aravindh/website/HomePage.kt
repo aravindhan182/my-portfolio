@@ -47,6 +47,7 @@ import aravindhwebsite.composeapp.generated.resources.experience
 import aravindhwebsite.composeapp.generated.resources.experience_desc
 import aravindhwebsite.composeapp.generated.resources.experience_year
 import aravindhwebsite.composeapp.generated.resources.home
+import aravindhwebsite.composeapp.generated.resources.icons8_github_48
 import aravindhwebsite.composeapp.generated.resources.jetpack_compose
 import aravindhwebsite.composeapp.generated.resources.kmp
 import aravindhwebsite.composeapp.generated.resources.know_about_me
@@ -472,7 +473,7 @@ fun Projects() {
     }
 }
 
-/*@Composable
+@Composable
 fun Contact() {
 
     val uriHandler = LocalUriHandler.current
@@ -494,13 +495,13 @@ fun Contact() {
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.Center
         ) {
-            Image(
+          /*  Image(
                 painter = painterResource(Res.drawable.linkedin),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
                 }
-            )
+            )*/
 
             Image(
                 painter = painterResource(Res.drawable.icons8_github_48),
@@ -510,7 +511,7 @@ fun Contact() {
                 }
             )
 
-            Image(
+       /*     Image(
                 painter = painterResource(Res.drawable.icons8_github_64),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
@@ -532,10 +533,10 @@ fun Contact() {
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     window.open("mailto:aravindhanathmanathan@gmail.com", "_self")
                 }
-            )
+            )*/
         }
     }
-}*/
+}
 
 fun downloadResume() {
     val anchor = document.createElement("a") as HTMLAnchorElement

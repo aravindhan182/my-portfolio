@@ -12,6 +12,9 @@ private object CommonMainDrawable0 {
   public val compose_multiplatform: DrawableResource by 
       lazy { init_compose_multiplatform() }
 
+  public val icons8_github_48: DrawableResource by 
+      lazy { init_icons8_github_48() }
+
   public val spend_smart: DrawableResource by 
       lazy { init_spend_smart() }
 
@@ -43,6 +46,18 @@ private fun init_compose_multiplatform(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/compose-multiplatform.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.icons8_github_48: DrawableResource
+  get() = CommonMainDrawable0.icons8_github_48
+
+private fun init_icons8_github_48(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:icons8_github_48",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/icons8_github_48.xml", -1, -1),
     )
 )
 

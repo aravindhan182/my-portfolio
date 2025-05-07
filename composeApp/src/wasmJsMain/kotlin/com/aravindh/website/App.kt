@@ -105,7 +105,7 @@ fun App() {
             Spacer(Modifier.padding(top = 50.dp))
             Section(stringResource(Res.string.experience), sectionPositions) { Experience() }
             Spacer(Modifier.padding(top = 50.dp))
-          //  Section(stringResource(Res.string.contact), sectionPositions) { Contact() }
+            Section(stringResource(Res.string.contact), sectionPositions) { Contact() }
             Resume()
         }
     }
