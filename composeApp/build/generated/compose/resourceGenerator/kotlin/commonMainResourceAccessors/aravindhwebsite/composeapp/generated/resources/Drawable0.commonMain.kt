@@ -12,6 +12,9 @@ private object CommonMainDrawable0 {
   public val compose_multiplatform: DrawableResource by 
       lazy { init_compose_multiplatform() }
 
+  public val tracking_icon: DrawableResource by 
+      lazy { init_tracking_icon() }
+
   public val webdev_4d72dbba32efee3890cef9bcacce7aa7: DrawableResource by 
       lazy { init_webdev_4d72dbba32efee3890cef9bcacce7aa7() }
 }
@@ -37,6 +40,18 @@ private fun init_compose_multiplatform(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/compose-multiplatform.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.tracking_icon: DrawableResource
+  get() = CommonMainDrawable0.tracking_icon
+
+private fun init_tracking_icon(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:tracking_icon",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/tracking_icon.xml", -1, -1),
     )
 )
 

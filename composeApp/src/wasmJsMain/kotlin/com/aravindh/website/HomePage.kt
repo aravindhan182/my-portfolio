@@ -70,6 +70,7 @@ import aravindhwebsite.composeapp.generated.resources.spend_smart_summary
 import aravindhwebsite.composeapp.generated.resources.sqlite
 import aravindhwebsite.composeapp.generated.resources.summary
 import aravindhwebsite.composeapp.generated.resources.this_website_is_belonging_to
+import aravindhwebsite.composeapp.generated.resources.tracking_icon
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
 import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
@@ -451,7 +452,11 @@ fun Projects() {
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
-
+                Image(
+                    painter = painterResource(Res.drawable.tracking_icon),
+                    contentDescription = null,
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
+                )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
                     stringResource(Res.string.representative_tracking_summary), color = Color.White,
