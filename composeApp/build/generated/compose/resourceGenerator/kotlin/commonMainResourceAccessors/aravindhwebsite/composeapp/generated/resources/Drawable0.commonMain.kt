@@ -15,6 +15,18 @@ private object CommonMainDrawable0 {
   public val icons8_github_48: DrawableResource by 
       lazy { init_icons8_github_48() }
 
+  public val icons8_github_64: DrawableResource by 
+      lazy { init_icons8_github_64() }
+
+  public val icons8_mail_94: DrawableResource by 
+      lazy { init_icons8_mail_94() }
+
+  public val instagram: DrawableResource by 
+      lazy { init_instagram() }
+
+  public val linkedin: DrawableResource by 
+      lazy { init_linkedin() }
+
   public val spend_smart: DrawableResource by 
       lazy { init_spend_smart() }
 
@@ -58,6 +70,52 @@ private fun init_icons8_github_48(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/icons8_github_48.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.icons8_github_64: DrawableResource
+  get() = CommonMainDrawable0.icons8_github_64
+
+private fun init_icons8_github_64(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:icons8_github_64",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/icons8_github_64.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.icons8_mail_94: DrawableResource
+  get() = CommonMainDrawable0.icons8_mail_94
+
+private fun init_icons8_mail_94(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:icons8_mail_94",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/icons8_mail_94.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.instagram: DrawableResource
+  get() = CommonMainDrawable0.instagram
+
+private fun init_instagram(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
+  "drawable:instagram",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/instagram.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.linkedin: DrawableResource
+  get() = CommonMainDrawable0.linkedin
+
+private fun init_linkedin(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
+  "drawable:linkedin",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/linkedin.xml", -1, -1),
     )
 )
 
