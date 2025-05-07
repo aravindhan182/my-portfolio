@@ -38,19 +38,26 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import aravindhwebsite.composeapp.generated.resources.Res
+import aravindhwebsite.composeapp.generated.resources._19197149
 import aravindhwebsite.composeapp.generated.resources.about
 import aravindhwebsite.composeapp.generated.resources.about_me
+import aravindhwebsite.composeapp.generated.resources.closeup_hands_business_meeting
 import aravindhwebsite.composeapp.generated.resources.contact
 import aravindhwebsite.composeapp.generated.resources.copyrights
 import aravindhwebsite.composeapp.generated.resources.experience
 import aravindhwebsite.composeapp.generated.resources.experience_desc
 import aravindhwebsite.composeapp.generated.resources.experience_year
 import aravindhwebsite.composeapp.generated.resources.home
+import aravindhwebsite.composeapp.generated.resources.icons8_github_48
+import aravindhwebsite.composeapp.generated.resources.icons8_github_64
+import aravindhwebsite.composeapp.generated.resources.icons8_mail_94
+import aravindhwebsite.composeapp.generated.resources.instagram
 import aravindhwebsite.composeapp.generated.resources.jetpack_compose
 import aravindhwebsite.composeapp.generated.resources.kmp
 import aravindhwebsite.composeapp.generated.resources.know_about_me
 import aravindhwebsite.composeapp.generated.resources.kotlin
 import aravindhwebsite.composeapp.generated.resources.ktor
+import aravindhwebsite.composeapp.generated.resources.linkedin
 import aravindhwebsite.composeapp.generated.resources.lspl
 import aravindhwebsite.composeapp.generated.resources.mobile_developer
 import aravindhwebsite.composeapp.generated.resources.my_skills
@@ -69,9 +76,11 @@ import aravindhwebsite.composeapp.generated.resources.spend_smart_summary
 import aravindhwebsite.composeapp.generated.resources.sqlite
 import aravindhwebsite.composeapp.generated.resources.summary
 import aravindhwebsite.composeapp.generated.resources.this_website_is_belonging_to
+import aravindhwebsite.composeapp.generated.resources.tracking_icon
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
 import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
+import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -415,7 +424,11 @@ fun Projects() {
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
-
+                Image(
+                    painter = painterResource(Res.drawable.closeup_hands_business_meeting),
+                    contentDescription = null,
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
+                )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
                     stringResource(Res.string.pos_summary), color = Color.White,
@@ -436,6 +449,11 @@ fun Projects() {
                     stringResource(Res.string.spend_smart_summary), color = Color.White,
                     modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
                 )
+                Image(
+                    painter = painterResource(Res.drawable._19197149),
+                    contentDescription = null,
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
+                )
             }
             Spacer(modifier = Modifier.padding(8.dp))
             Column(modifier = Modifier.weight(1f)) {
@@ -445,6 +463,11 @@ fun Projects() {
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+                Image(
+                    painter = painterResource(Res.drawable.tracking_icon),
+                    contentDescription = null,
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
@@ -458,6 +481,7 @@ fun Projects() {
 
 @Composable
 fun Contact() {
+
     val uriHandler = LocalUriHandler.current
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -477,6 +501,45 @@ fun Contact() {
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.Center
         ) {
+            Image(
+                painter = painterResource(Res.drawable.linkedin),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.icons8_github_48),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://github.com/aravindhan182")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.icons8_github_64),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://github.com/aravindh2106")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.instagram),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    uriHandler.openUri("https://www.instagram.com/aravindh_azeal?igsh=MW83ejMzN3AwMDJiZg==")
+                }
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.icons8_mail_94),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp).weight(1F).clickable {
+                    window.open("mailto:aravindhanathmanathan@gmail.com", "_self")
+                }
+            )
         }
     }
 }
