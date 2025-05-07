@@ -6,12 +6,27 @@ import kotlin.OptIn
 import org.jetbrains.compose.resources.DrawableResource
 
 private object CommonMainDrawable0 {
+  public val closeup_hands_business_meeting: DrawableResource by 
+      lazy { init_closeup_hands_business_meeting() }
+
   public val compose_multiplatform: DrawableResource by 
       lazy { init_compose_multiplatform() }
 
   public val webdev_4d72dbba32efee3890cef9bcacce7aa7: DrawableResource by 
       lazy { init_webdev_4d72dbba32efee3890cef9bcacce7aa7() }
 }
+
+internal val Res.drawable.closeup_hands_business_meeting: DrawableResource
+  get() = CommonMainDrawable0.closeup_hands_business_meeting
+
+private fun init_closeup_hands_business_meeting(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:closeup_hands_business_meeting",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/closeup_hands_business_meeting.xml", -1, -1),
+    )
+)
 
 internal val Res.drawable.compose_multiplatform: DrawableResource
   get() = CommonMainDrawable0.compose_multiplatform
