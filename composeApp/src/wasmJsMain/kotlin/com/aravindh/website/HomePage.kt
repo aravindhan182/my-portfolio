@@ -437,6 +437,11 @@ fun Projects() {
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
+                Image(
+                    painter = painterResource(Res.drawable.spend_smart),
+                    contentDescription = null,
+                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
+                )
                 Spacer(modifier = Modifier.padding(16.dp))
                 Text(
                     stringResource(Res.string.spend_smart_summary), color = Color.White,

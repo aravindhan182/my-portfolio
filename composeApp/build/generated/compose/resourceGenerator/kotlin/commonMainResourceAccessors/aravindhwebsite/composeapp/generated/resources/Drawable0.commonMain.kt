@@ -12,6 +12,9 @@ private object CommonMainDrawable0 {
   public val compose_multiplatform: DrawableResource by 
       lazy { init_compose_multiplatform() }
 
+  public val spend_smart: DrawableResource by 
+      lazy { init_spend_smart() }
+
   public val tracking_icon: DrawableResource by 
       lazy { init_tracking_icon() }
 
@@ -40,6 +43,17 @@ private fun init_compose_multiplatform(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/compose-multiplatform.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.spend_smart: DrawableResource
+  get() = CommonMainDrawable0.spend_smart
+
+private fun init_spend_smart(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
+  "drawable:spend_smart",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/aravindhwebsite.composeapp.generated.resources/drawable/spend_smart.xml", -1, -1),
     )
 )
 
