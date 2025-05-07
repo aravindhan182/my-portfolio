@@ -50,7 +50,6 @@ import aravindhwebsite.composeapp.generated.resources.experience_year
 import aravindhwebsite.composeapp.generated.resources.home
 import aravindhwebsite.composeapp.generated.resources.icons8_github_48
 import aravindhwebsite.composeapp.generated.resources.icons8_github_64
-import aravindhwebsite.composeapp.generated.resources.icons8_mail_94
 import aravindhwebsite.composeapp.generated.resources.instagram
 import aravindhwebsite.composeapp.generated.resources.jetpack_compose
 import aravindhwebsite.composeapp.generated.resources.kmp
@@ -80,7 +79,6 @@ import aravindhwebsite.composeapp.generated.resources.tracking_icon
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
 import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
-import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -530,14 +528,6 @@ fun Contact() {
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     uriHandler.openUri("https://www.instagram.com/aravindh_azeal?igsh=MW83ejMzN3AwMDJiZg==")
-                }
-            )
-
-            Image(
-                painter = painterResource(Res.drawable.icons8_mail_94),
-                contentDescription = null,
-                modifier = Modifier.size(100.dp).weight(1F).clickable {
-                    window.open("mailto:aravindhanathmanathan@gmail.com", "_self")
                 }
             )
         }
