@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
@@ -49,6 +50,7 @@ import aravindhwebsite.composeapp.generated.resources.experience_year
 import aravindhwebsite.composeapp.generated.resources.home
 import aravindhwebsite.composeapp.generated.resources.icons8_github_48
 import aravindhwebsite.composeapp.generated.resources.icons8_github_64
+import aravindhwebsite.composeapp.generated.resources.icons8_mail_94
 import aravindhwebsite.composeapp.generated.resources.instagram
 import aravindhwebsite.composeapp.generated.resources.jetpack_compose
 import aravindhwebsite.composeapp.generated.resources.kmp
@@ -78,6 +80,7 @@ import aravindhwebsite.composeapp.generated.resources.tracking_icon
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
 import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
+import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -494,7 +497,7 @@ fun Contact() {
         )
         Spacer(modifier = Modifier.padding(16.dp))
         Row(
-            modifier = Modifier.width(600.dp),
+            modifier = Modifier.wrapContentWidth(),
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -530,13 +533,13 @@ fun Contact() {
                 }
             )
 
-           /* Image(
+            Image(
                 painter = painterResource(Res.drawable.icons8_mail_94),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     window.open("mailto:aravindhanathmanathan@gmail.com", "_self")
                 }
-            )*/
+            )
         }
     }
 }
