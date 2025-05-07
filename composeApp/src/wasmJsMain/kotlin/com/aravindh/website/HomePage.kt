@@ -38,7 +38,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import aravindhwebsite.composeapp.generated.resources.Res
-import aravindhwebsite.composeapp.generated.resources._19197149
+import aravindhwebsite.composeapp.generated.resources._9197149
+
 import aravindhwebsite.composeapp.generated.resources.about
 import aravindhwebsite.composeapp.generated.resources.about_me
 import aravindhwebsite.composeapp.generated.resources.closeup_hands_business_meeting
@@ -450,7 +451,7 @@ fun Projects() {
                     modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
                 )
                 Image(
-                    painter = painterResource(Res.drawable._19197149),
+                    painter = painterResource(Res.drawable._9197149),
                     contentDescription = null,
                     modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
                 )
