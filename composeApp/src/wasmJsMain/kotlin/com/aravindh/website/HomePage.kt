@@ -46,16 +46,11 @@ import aravindhwebsite.composeapp.generated.resources.experience
 import aravindhwebsite.composeapp.generated.resources.experience_desc
 import aravindhwebsite.composeapp.generated.resources.experience_year
 import aravindhwebsite.composeapp.generated.resources.home
-import aravindhwebsite.composeapp.generated.resources.icons8_github_48
-import aravindhwebsite.composeapp.generated.resources.icons8_github_64
-import aravindhwebsite.composeapp.generated.resources.icons8_mail_94
-import aravindhwebsite.composeapp.generated.resources.instagram
 import aravindhwebsite.composeapp.generated.resources.jetpack_compose
 import aravindhwebsite.composeapp.generated.resources.kmp
 import aravindhwebsite.composeapp.generated.resources.know_about_me
 import aravindhwebsite.composeapp.generated.resources.kotlin
 import aravindhwebsite.composeapp.generated.resources.ktor
-import aravindhwebsite.composeapp.generated.resources.linkedin
 import aravindhwebsite.composeapp.generated.resources.lspl
 import aravindhwebsite.composeapp.generated.resources.mobile_developer
 import aravindhwebsite.composeapp.generated.resources.my_skills
@@ -77,7 +72,6 @@ import aravindhwebsite.composeapp.generated.resources.this_website_is_belonging_
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
 import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
-import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -462,7 +456,7 @@ fun Projects() {
     }
 }
 
-@Composable
+/*@Composable
 fun Contact() {
 
     val uriHandler = LocalUriHandler.current
@@ -525,7 +519,7 @@ fun Contact() {
             )
         }
     }
-}
+}*/
 
 fun downloadResume() {
     val anchor = document.createElement("a") as HTMLAnchorElement
