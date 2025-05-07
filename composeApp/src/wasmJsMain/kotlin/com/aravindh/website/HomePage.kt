@@ -49,13 +49,13 @@ import aravindhwebsite.composeapp.generated.resources.experience_year
 import aravindhwebsite.composeapp.generated.resources.home
 import aravindhwebsite.composeapp.generated.resources.icons8_github_48
 import aravindhwebsite.composeapp.generated.resources.icons8_github_64
-import aravindhwebsite.composeapp.generated.resources.icons8_mail_94
 import aravindhwebsite.composeapp.generated.resources.instagram
 import aravindhwebsite.composeapp.generated.resources.jetpack_compose
 import aravindhwebsite.composeapp.generated.resources.kmp
 import aravindhwebsite.composeapp.generated.resources.know_about_me
 import aravindhwebsite.composeapp.generated.resources.kotlin
 import aravindhwebsite.composeapp.generated.resources.ktor
+import aravindhwebsite.composeapp.generated.resources.linkedin
 import aravindhwebsite.composeapp.generated.resources.lspl
 import aravindhwebsite.composeapp.generated.resources.mobile_developer
 import aravindhwebsite.composeapp.generated.resources.my_skills
@@ -78,7 +78,6 @@ import aravindhwebsite.composeapp.generated.resources.tracking_icon
 import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890cef9bcacce7aa7
 import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
-import kotlinx.browser.window
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -499,13 +498,13 @@ fun Contact() {
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.Center
         ) {
-          /*  Image(
+           Image(
                 painter = painterResource(Res.drawable.linkedin),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
                 }
-            )*/
+            )
 
             Image(
                 painter = painterResource(Res.drawable.icons8_github_48),
@@ -531,13 +530,13 @@ fun Contact() {
                 }
             )
 
-            Image(
+           /* Image(
                 painter = painterResource(Res.drawable.icons8_mail_94),
                 contentDescription = null,
                 modifier = Modifier.size(100.dp).weight(1F).clickable {
                     window.open("mailto:aravindhanathmanathan@gmail.com", "_self")
                 }
-            )
+            )*/
         }
     }
 }
