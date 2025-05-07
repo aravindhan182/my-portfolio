@@ -176,7 +176,7 @@ fun AnimatedTexts() {
             fontSize = 18.sp
         )
         Spacer(Modifier.padding(8.dp))
-        if (showResume) {
+  /*      if (showResume) {
             OutlinedButton(
                 onClick = {},
                 border = BorderStroke(1.dp, Color.Cyan),
@@ -193,7 +193,7 @@ fun AnimatedTexts() {
                     }
                 )
             }
-        }
+        }*/
     }
 }
 
@@ -544,6 +544,7 @@ fun Contact() {
     }
 }
 
+/*
 fun downloadResume() {
     val anchor = document.createElement("a") as HTMLAnchorElement
     anchor.href = "My_resume_compressed.pdf"
@@ -552,6 +553,7 @@ fun downloadResume() {
     anchor.click()
     document.body?.removeChild(anchor)
 }
+*/
 
 @Composable
 fun Resume() {
