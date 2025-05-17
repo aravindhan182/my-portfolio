@@ -83,7 +83,7 @@ fun App() {
                 coroutineScope.launch {
                     sectionPositions[section]?.let { scrollState.animateScrollTo(it) }
                 }
-            }, hasMobile = isAndroid())
+            })
 
             Divider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(50.dp))

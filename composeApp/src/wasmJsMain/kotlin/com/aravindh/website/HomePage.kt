@@ -6,16 +6,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
@@ -35,7 +36,6 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -86,74 +86,81 @@ import org.jetbrains.compose.resources.stringResource
 import org.w3c.dom.HTMLAnchorElement
 
 @Composable
-fun HomePage(onNavClick: (String) -> Unit, hasMobile:String) {
-    /*if (hasMobile) {
-        Column(
-            horizontalAlignment = Alignment.End
-        ) {
-            Text(
-                stringResource(Res.string.name),
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                fontSize =24.sp
-            )
-            listOf(
-                stringResource(Res.string.home),
-                stringResource(Res.string.about),
-                stringResource(Res.string.experience),
-                stringResource(Res.string.projects),
-                stringResource(Res.string.contact)
-            ).forEach { section ->
-                Text(
-                    text = section,
-                    color = Color.White,
-                    textAlign = TextAlign.End,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 16.sp,
-                    modifier = Modifier.clickable { onNavClick(section) }
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-            }
+fun HomePage(onNavClick: (String) -> Unit) {
+    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+        val isMobile = maxWidth < 600.dp
 
-        }
-    } else {*/
         Column(
-            horizontalAlignment = Alignment.End
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = if (isMobile) Alignment.Start else Alignment.End
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    hasMobile,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 48.sp
-                )
-                Row(modifier = Modifier.padding(top = 16.dp)) {
-                    listOf(
-                        stringResource(Res.string.home),
-                        stringResource(Res.string.about),
-                        stringResource(Res.string.experience),
-                        stringResource(Res.string.projects),
-                        stringResource(Res.string.contact)
-                    ).forEach { section ->
-                        Text(
-                            text = section,
-                            color = Color.White,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 16.sp,
-                            modifier = Modifier.clickable { onNavClick(section) }
-                        )
-                        Spacer(modifier = Modifier.width(16.dp))
+            // Header Row or Column based on screen size
+            if (isMobile) {
+                Column(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        stringResource(Res.string.name),
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 32.sp
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Column {
+                        navItems().forEach { section ->
+                            Text(
+                                text = section,
+                                color = Color.White,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 14.sp,
+                                modifier = Modifier
+                                    .clickable { onNavClick(section) }
+                                    .padding(vertical = 8.dp)
+                            )
+                        }
+                    }
+                }
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        "Aravindhan",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 48.sp
+                    )
+                    Row(modifier = Modifier.padding(top = 16.dp)) {
+                        navItems().forEach { section ->
+                            Text(
+                                text = section,
+                                color = Color.White,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 16.sp,
+                                modifier = Modifier
+                                    .clickable { onNavClick(section) }
+                                    .padding(horizontal = 8.dp)
+                            )
+                        }
                     }
                 }
             }
         }
-  //  }
+    }
+}
 
+@Composable
+private fun navItems(): List<String> {
+    return listOf(
+        stringResource(Res.string.home),
+        stringResource(Res.string.about),
+        stringResource(Res.string.experience),
+        stringResource(Res.string.projects),
+        stringResource(Res.string.contact)
+    )
 }
 
 
