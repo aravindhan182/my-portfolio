@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -85,42 +86,74 @@ import org.jetbrains.compose.resources.stringResource
 import org.w3c.dom.HTMLAnchorElement
 
 @Composable
-fun HomePage(onNavClick: (String) -> Unit) {
-    Column(
-        horizontalAlignment = Alignment.End
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+fun HomePage(onNavClick: (String) -> Unit, hasMobile:Boolean) {
+    if (hasMobile) {
+        Column(
+            horizontalAlignment = Alignment.End
         ) {
             Text(
                 stringResource(Res.string.name),
                 color = Color.White,
                 fontWeight = FontWeight.Bold,
-                fontSize = 48.sp
+                fontSize =24.sp
             )
-            Row(modifier = Modifier.padding(top = 16.dp)) {
-                listOf(
-                    stringResource(Res.string.home),
-                    stringResource(Res.string.about),
-                    stringResource(Res.string.experience),
-                    stringResource(Res.string.projects),
-                    stringResource(Res.string.contact)
-                ).forEach { section ->
-                    Text(
-                        text = section,
-                        color = Color.White,
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 16.sp,
-                        modifier = Modifier.clickable { onNavClick(section) }
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
+            listOf(
+                stringResource(Res.string.home),
+                stringResource(Res.string.about),
+                stringResource(Res.string.experience),
+                stringResource(Res.string.projects),
+                stringResource(Res.string.contact)
+            ).forEach { section ->
+                Text(
+                    text = section,
+                    color = Color.White,
+                    textAlign = TextAlign.End,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 16.sp,
+                    modifier = Modifier.clickable { onNavClick(section) }
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+            }
+
+        }
+    } else {
+        Column(
+            horizontalAlignment = Alignment.End
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    stringResource(Res.string.name),
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 48.sp
+                )
+                Row(modifier = Modifier.padding(top = 16.dp)) {
+                    listOf(
+                        stringResource(Res.string.home),
+                        stringResource(Res.string.about),
+                        stringResource(Res.string.experience),
+                        stringResource(Res.string.projects),
+                        stringResource(Res.string.contact)
+                    ).forEach { section ->
+                        Text(
+                            text = section,
+                            color = Color.White,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 16.sp,
+                            modifier = Modifier.clickable { onNavClick(section) }
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                    }
                 }
             }
         }
     }
+
 }
 
 

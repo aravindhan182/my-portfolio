@@ -41,6 +41,10 @@ import aravindhwebsite.composeapp.generated.resources.projects
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 
+fun isAndroid(): Boolean {
+    val platform = getPlatform()
+    return platform.name.startsWith("Android")
+}
 
 @Composable
 fun App() {
@@ -79,7 +83,7 @@ fun App() {
                 coroutineScope.launch {
                     sectionPositions[section]?.let { scrollState.animateScrollTo(it) }
                 }
-            })
+            }, hasMobile = isAndroid())
 
             Divider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(50.dp))
