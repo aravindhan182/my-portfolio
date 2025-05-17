@@ -636,14 +636,14 @@ fun Footer() {
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight()
+            .wrapContentHeight().background(Color.Black)
     ) {
         val isMobile = maxWidth < 600.dp
         val fontSize = if (isMobile) 18.sp else 24.sp
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = if (isMobile) 8.dp else 16.dp).background(Color.Black)
+            modifier = Modifier.fillMaxWidth().padding(horizontal = if (isMobile) 8.dp else 16.dp)
         ) {
             Row(
                 horizontalArrangement = Arrangement.Center,
