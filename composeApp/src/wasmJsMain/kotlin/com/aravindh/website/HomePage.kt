@@ -8,6 +8,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,6 +38,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -265,114 +268,110 @@ fun ImageFadeInAnimation(modifier: Modifier = Modifier) {
 
 @Composable
 fun About() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            stringResource(Res.string.about_me),
-            fontSize = 32.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            textDecoration = TextDecoration.Underline
-        )
-        Spacer(modifier = Modifier.padding(16.dp))
-        Text(
-            stringResource(Res.string.short_summary),
-            color = Color.White
-        )
-        Spacer(modifier = Modifier.padding(16.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 64.dp, end = 64.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val isMobile = maxWidth < 600.dp
 
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    stringResource(Res.string.know_about_me),
-                    fontSize = 24.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.padding(16.dp))
-                Text(
-                    stringResource(Res.string.summary),
-                    color = Color.White
-                )
-                Spacer(modifier = Modifier.padding(8.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = if (isMobile) 16.dp else 64.dp)
+                .padding(vertical = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
+        ) {
+            Text(
+                stringResource(Res.string.about_me),
+                fontSize = if (isMobile) 24.sp else 32.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                textDecoration = TextDecoration.Underline
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                stringResource(Res.string.short_summary),
+                color = Color.White,
+                fontSize = if (isMobile) 14.sp else 16.sp,
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            if (isMobile) {
+                // Stack vertically on mobile
+                Column {
+                    KnowAboutMeSection(isMobile)
+                    Spacer(modifier = Modifier.height(24.dp))
+                    MySkillsSection(isMobile)
+                }
+            } else {
+                // Side-by-side on desktop
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    KnowAboutMeSection(isMobile, modifier = Modifier.weight(1f))
+                    Spacer(modifier = Modifier.width(32.dp))
+                    MySkillsSection(isMobile, modifier = Modifier.weight(1f))
+                }
             }
-            Spacer(modifier = Modifier.padding(16.dp))
-            Column(modifier = Modifier.weight(1f)) {
+        }
+    }
+}
+
+@Composable
+private fun KnowAboutMeSection(isMobile: Boolean, modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        Text(
+            stringResource(Res.string.know_about_me),
+            fontSize = if (isMobile) 20.sp else 24.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            stringResource(Res.string.summary),
+            color = Color.White,
+            fontSize = if (isMobile) 14.sp else 16.sp
+        )
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun MySkillsSection(isMobile: Boolean, modifier: Modifier = Modifier) {
+    val skills = listOf(
+        Res.string.kotlin, Res.string.xml, Res.string.jetpack_compose,
+        Res.string.ktor, Res.string.kmp,
+        Res.string.sqlite, Res.string.postgres
+    )
+
+    Column(modifier = modifier) {
+        Text(
+            stringResource(Res.string.my_skills),
+            fontSize = if (isMobile) 20.sp else 24.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Wrap skills into multiple rows automatically
+        FlowRow(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            skills.forEach {
                 Text(
-                    stringResource(Res.string.my_skills),
-                    fontSize = 24.sp,
+                    text = stringResource(it),
                     color = Color.White,
-                    fontWeight = FontWeight.Bold
+                    fontSize = if (isMobile) 12.sp else 14.sp,
+                    modifier = Modifier
+                        .background(Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
+                        .padding(horizontal = 12.dp, vertical = 8.dp)
                 )
-                Spacer(modifier = Modifier.padding(16.dp))
-                Row {
-                    Text(
-                        text = stringResource(Res.string.kotlin),
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(8.dp))
-                    Text(
-                        text = stringResource(Res.string.xml),
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(8.dp))
-                    Text(
-                        text = stringResource(Res.string.jetpack_compose),
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(8.dp))
-                    Text(
-                        text = stringResource(Res.string.ktor),
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(8.dp))
-                    Text(
-                        text = stringResource(Res.string.kmp),
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
-                            .padding(8.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.padding(8.dp))
-                Row {
-                    Text(
-                        text = stringResource(Res.string.sqlite),
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(8.dp))
-                    Text(
-                        text = stringResource(Res.string.postgres),
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(color = Color(0xFF2e4053), shape = RoundedCornerShape(8.dp))
-                            .padding(8.dp)
-                    )
-                    Spacer(modifier = Modifier.padding(8.dp))
-                }
             }
         }
     }
