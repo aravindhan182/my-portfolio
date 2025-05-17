@@ -643,7 +643,7 @@ fun Footer() {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = if (isMobile) 8.dp else 16.dp)
+            modifier = Modifier.fillMaxWidth().padding(horizontal = if (isMobile) 8.dp else 16.dp).background(Color.Black)
         ) {
             Row(
                 horizontalArrangement = Arrangement.Center,
