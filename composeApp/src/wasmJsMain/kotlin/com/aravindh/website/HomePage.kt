@@ -86,8 +86,8 @@ import org.jetbrains.compose.resources.stringResource
 import org.w3c.dom.HTMLAnchorElement
 
 @Composable
-fun HomePage(onNavClick: (String) -> Unit, hasMobile:Boolean) {
-    if (hasMobile) {
+fun HomePage(onNavClick: (String) -> Unit, hasMobile:String) {
+    /*if (hasMobile) {
         Column(
             horizontalAlignment = Alignment.End
         ) {
@@ -116,7 +116,7 @@ fun HomePage(onNavClick: (String) -> Unit, hasMobile:Boolean) {
             }
 
         }
-    } else {
+    } else {*/
         Column(
             horizontalAlignment = Alignment.End
         ) {
@@ -127,7 +127,7 @@ fun HomePage(onNavClick: (String) -> Unit, hasMobile:Boolean) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    stringResource(Res.string.name),
+                    hasMobile,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 48.sp
@@ -152,7 +152,7 @@ fun HomePage(onNavClick: (String) -> Unit, hasMobile:Boolean) {
                 }
             }
         }
-    }
+  //  }
 
 }
 

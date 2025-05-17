@@ -41,9 +41,9 @@ import aravindhwebsite.composeapp.generated.resources.projects
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 
-fun isAndroid(): Boolean {
+fun isAndroid(): String {
     val platform = getPlatform()
-    return platform.name.startsWith("Android")
+    return platform.name
 }
 
 @Composable
