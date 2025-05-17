@@ -622,7 +622,7 @@ fun ContactIcon(drawableRes: DrawableResource, onClick: () -> Unit) {
 
 fun downloadResume() {
     val anchor = document.createElement("a") as HTMLAnchorElement
-    anchor.href = "My_resume_compressed.pdf"
+    anchor.href = "Aravindh_resume.pdf"
     anchor.download = "Aravindhan_Resume.pdf"
     document.body?.appendChild(anchor)
     anchor.click()
@@ -630,31 +630,47 @@ fun downloadResume() {
 }
 
 @Composable
-fun Resume() {
+fun Footer() {
     val uriHandler = LocalUriHandler.current
-    Column(
-        modifier = Modifier.fillMaxWidth().wrapContentHeight().background(Color.Black)
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(horizontalArrangement = Arrangement.Center) {
 
+    BoxWithConstraints(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+    ) {
+        val isMobile = maxWidth < 600.dp
+        val fontSize = if (isMobile) 18.sp else 24.sp
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = if (isMobile) 8.dp else 16.dp)
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = stringResource(Res.string.this_website_is_belonging_to),
+                    color = Color.White,
+                    fontSize = fontSize
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = stringResource(Res.string.name),
+                    modifier = Modifier.clickable {
+                        uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
+                    },
+                    color = Color(0xFF1897bc),
+                    style = TextStyle(textDecoration = TextDecoration.Underline),
+                    fontSize = fontSize
+                )
+            }
+            Spacer(modifier = Modifier.height(if (isMobile) 8.dp else 16.dp))
             Text(
-                stringResource(Res.string.this_website_is_belonging_to),
+                text = stringResource(Res.string.copyrights),
                 color = Color.White,
-                fontSize = 24.sp
-            )
-            Text(
-                stringResource(Res.string.name),
-                modifier = Modifier.clickable {
-                    uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
-                },
-                color = Color(0xFF1897bc),
-                style = TextStyle(textDecoration = TextDecoration.Underline),
-                fontSize = 24.sp,
+                fontSize = fontSize
             )
         }
-        Spacer(modifier = Modifier.padding(8.dp))
-        Text(stringResource(Res.string.copyrights), color = Color.White, fontSize = 24.sp)
     }
 }

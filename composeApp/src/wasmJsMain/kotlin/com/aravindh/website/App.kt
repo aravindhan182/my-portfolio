@@ -88,20 +88,6 @@ fun App() {
 
             Divider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(50.dp))
-
-          /*  Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 56.dp)
-                    .background(Color(0xFF17202a))
-                    .padding(vertical = 16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Column(horizontalAlignment = Alignment.Start, modifier = Modifier.weight(1f)) {
-                    AnimatedTexts()
-                }
-                ImageFadeInAnimation(modifier = Modifier.weight(1f))
-            }*/
             BoxWithConstraints(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -145,7 +131,7 @@ fun App() {
             Section(stringResource(Res.string.experience), sectionPositions) { Experience() }
             Spacer(Modifier.padding(top = 50.dp))
             Section(stringResource(Res.string.contact), sectionPositions) { Contact() }
-            Resume()
+            Footer()
         }
     }
 }
