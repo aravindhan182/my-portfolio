@@ -1,0 +1,11 @@
+abi_version=1.8.0
+builtins_platform=WASM
+compiler_version=2.0.0
+depends=components.resources\:library components.ui-tooling-preview\:library org.jetbrains.androidx.lifecycle\:lifecycle-viewmodel org.jetbrains.androidx.lifecycle\:lifecycle-runtime-compose org.jetbrains.androidx.lifecycle\:lifecycle-runtime org.jetbrains.androidx.lifecycle\:lifecycle-common org.jetbrains.compose.annotation-internal\:annotation org.jetbrains.compose.material\:material org.jetbrains.compose.material\:material-ripple org.jetbrains.compose.foundation\:foundation org.jetbrains.compose.animation\:animation org.jetbrains.compose.animation\:animation-core org.jetbrains.kotlinx\:kotlinx-coroutines-core org.jetbrains.kotlinx\:atomicfu org.jetbrains.compose.material\:material-icons-core org.jetbrains.compose.foundation\:foundation-layout org.jetbrains.compose.ui\:ui org.jetbrains.compose.runtime\:runtime-saveable kotlin org.jetbrains.compose.runtime\:runtime org.jetbrains.compose.ui\:ui-text org.jetbrains.compose.ui\:ui-graphics org.jetbrains.compose.ui\:ui-unit org.jetbrains.skiko\:skiko org.jetbrains.compose.ui\:ui-geometry org.jetbrains.compose.ui\:ui-util
+ir_signature_versions=1,2
+jsOutputName=composeApp
+metadata_version=1.4.1
+serializedIrFileFingerprints=1gsjhshvk88ap.3ul0ugeo3tbqs 3kl1hyp8fztw5.36mjj2i11l41b 3vf479eja2rr0.1l2atjerj2qxi 1ds9wfemgwddy.2rgum0o64zxsb 4b2j4r0z4lic.20twqtjnxphm6 zd9ygby1yxye.3am2htw5pbh07 3p6i9rhxmml5y.itmxb1xjuxne v8ymzmt2ysjn.30t1bramvdm5h
+serializedKlibFingerprint=1gi3n2ulho3e2.3qfys6moukzqy
+unique_name=AravindhWebsite\:composeApp
+wasm_targets=wasm-js
