@@ -3,6 +3,7 @@ package com.aravindh.website
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -88,7 +89,7 @@ fun App() {
             Divider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(horizontal = 16.dp))
             Spacer(modifier = Modifier.height(50.dp))
 
-            Row(
+          /*  Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 56.dp)
@@ -100,6 +101,40 @@ fun App() {
                     AnimatedTexts()
                 }
                 ImageFadeInAnimation(modifier = Modifier.weight(1f))
+            }*/
+            BoxWithConstraints(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFF17202a))
+                    .padding(vertical = 16.dp)
+            ) {
+                val isMobile = maxWidth < 600.dp
+
+                val horizontalPadding = if (isMobile) 16.dp else 56.dp
+                val verticalPadding = if (isMobile) 16.dp else 32.dp
+
+                val layoutModifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = horizontalPadding, end = horizontalPadding, top = verticalPadding, bottom = verticalPadding)
+
+                if (isMobile) {
+                    Column(
+                        modifier = layoutModifier,
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        AnimatedTexts(isMobile = true)
+                        ImageFadeInAnimation(isMobile = true)
+                    }
+                } else {
+                    Row(
+                        modifier = layoutModifier,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        AnimatedTexts(modifier = Modifier.weight(1f), isMobile = false)
+                        ImageFadeInAnimation(modifier = Modifier.weight(1f), isMobile = false)
+                    }
+                }
             }
 
             Spacer(Modifier.padding(top = 50.dp))

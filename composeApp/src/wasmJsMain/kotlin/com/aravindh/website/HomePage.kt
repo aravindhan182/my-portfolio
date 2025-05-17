@@ -84,6 +84,8 @@ import aravindhwebsite.composeapp.generated.resources.webdev_4d72dbba32efee3890c
 import aravindhwebsite.composeapp.generated.resources.xml
 import kotlinx.browser.document
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.w3c.dom.HTMLAnchorElement
@@ -99,7 +101,6 @@ fun HomePage(onNavClick: (String) -> Unit) {
                 .padding(16.dp),
             horizontalAlignment = if (isMobile) Alignment.Start else Alignment.End
         ) {
-            // Header Row or Column based on screen size
             if (isMobile) {
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -131,7 +132,7 @@ fun HomePage(onNavClick: (String) -> Unit) {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        "Aravindhan",
+                        stringResource(Res.string.name),
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         fontSize = 48.sp
@@ -168,30 +169,28 @@ private fun navItems(): List<String> {
 
 
 @Composable
-fun AnimatedTexts() {
+fun AnimatedTexts(modifier: Modifier = Modifier, isMobile: Boolean) {
     var firstTextToDisplay by remember { mutableStateOf("") }
     val firstOriginalText = "Hi, I'm Aravindh"
     var firstIndex by remember { mutableStateOf(0) }
 
     var secondTextToDisplay by remember { mutableStateOf("") }
-    val secondOriginalText =
-        stringResource(Res.string.short_summary_2)
+    val secondOriginalText = stringResource(Res.string.short_summary_2)
     var secondIndex by remember { mutableStateOf(0) }
 
     var showSecondText by remember { mutableStateOf(false) }
-
     var showResume by remember { mutableStateOf(false) }
 
-    LaunchedEffect(key1 = Unit) {
+    LaunchedEffect(Unit) {
         while (firstIndex <= firstOriginalText.length) {
             firstTextToDisplay = firstOriginalText.substring(0, firstIndex)
             firstIndex++
             delay(100)
         }
-        showSecondText = true // Start second animation after first is finished
+        showSecondText = true
     }
 
-    LaunchedEffect(key1 = showSecondText) {
+    LaunchedEffect(showSecondText) {
         if (showSecondText) {
             while (secondIndex <= secondOriginalText.length) {
                 secondTextToDisplay = secondOriginalText.substring(0, secondIndex)
@@ -202,24 +201,24 @@ fun AnimatedTexts() {
         }
     }
 
-    Column {
+    Column(modifier = modifier) {
         Text(
             text = firstTextToDisplay,
             color = Color.Cyan,
             fontFamily = FontFamily.Serif,
             fontWeight = FontWeight.SemiBold,
-            fontSize = 40.sp
+            fontSize = if (isMobile) 28.sp else 40.sp
         )
-        Spacer(Modifier.padding(8.dp))
+        Spacer(Modifier.height(8.dp))
         Text(
             text = secondTextToDisplay,
             color = Color.White,
-            fontSize = 18.sp
+            fontSize = if (isMobile) 14.sp else 18.sp
         )
-        Spacer(Modifier.padding(8.dp))
+        Spacer(Modifier.height(12.dp))
         if (showResume) {
             OutlinedButton(
-                onClick = {},
+                onClick = { downloadResume() },
                 border = BorderStroke(1.dp, Color.Cyan),
                 colors = ButtonDefaults.outlinedButtonColors(
                     backgroundColor = Color(0xFF17202a),
@@ -227,40 +226,35 @@ fun AnimatedTexts() {
                 )
             ) {
                 Text(
-                    stringResource(Res.string.resume), fontWeight = FontWeight.SemiBold,
-                    fontSize = 40.sp,
-                    modifier = Modifier.clickable {
-                        downloadResume()
-                    }
+                    stringResource(Res.string.resume),
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = if (isMobile) 20.sp else 28.sp
                 )
             }
         }
     }
 }
 
+
 @Composable
-fun ImageFadeInAnimation(modifier: Modifier = Modifier) {
-    var imageSize by remember { mutableStateOf(0.dp) }
-    val targetSize = 100.dp
-
-    LaunchedEffect(Unit) {
-        while (imageSize < targetSize) {
-            imageSize += 0.5.dp
-            delay(50)
-        }
-    }
-
+fun ImageFadeInAnimation(
+    modifier: Modifier = Modifier,
+    isMobile: Boolean
+) {
     var visible by remember { mutableStateOf(false) }
+
     LaunchedEffect(Unit) {
         delay(500)
         visible = true
     }
 
+    val imageSize = if (isMobile) 200.dp else 400.dp
+
     AnimatedVisibility(visible = visible) {
         Image(
             painter = painterResource(Res.drawable.webdev_4d72dbba32efee3890cef9bcacce7aa7),
-            contentDescription = "Your image description",
-            modifier = modifier.size(500.dp)
+            contentDescription = "Developer Illustration",
+            modifier = modifier.size(imageSize)
         )
     }
 }
@@ -299,14 +293,12 @@ fun About() {
             Spacer(modifier = Modifier.height(24.dp))
 
             if (isMobile) {
-                // Stack vertically on mobile
                 Column {
                     KnowAboutMeSection(isMobile)
                     Spacer(modifier = Modifier.height(24.dp))
                     MySkillsSection(isMobile)
                 }
             } else {
-                // Side-by-side on desktop
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
@@ -356,8 +348,6 @@ private fun MySkillsSection(isMobile: Boolean, modifier: Modifier = Modifier) {
         )
 
         Spacer(modifier = Modifier.height(16.dp))
-
-        // Wrap skills into multiple rows automatically
         FlowRow(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -379,198 +369,255 @@ private fun MySkillsSection(isMobile: Boolean, modifier: Modifier = Modifier) {
 
 @Composable
 fun Experience() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            stringResource(Res.string.experience),
-            fontSize = 32.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            textDecoration = TextDecoration.Underline
-        )
-        Spacer(Modifier.padding(16.dp))
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.SpaceEvenly
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val isMobile = maxWidth < 600.dp
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = if (isMobile) 16.dp else 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
+            Text(
+                stringResource(Res.string.experience),
+                fontSize = if (isMobile) 24.sp else 32.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                textDecoration = TextDecoration.Underline
+            )
+
+            Spacer(Modifier.height(16.dp))
+
             Card(
-                shape = RoundedCornerShape(8.dp),
+                shape = RoundedCornerShape(12.dp),
                 backgroundColor = MaterialTheme.colors.surface,
-                modifier = Modifier.width(500.dp),
-                elevation = 16.dp
+                elevation = 12.dp,
+                modifier = Modifier
+                    .fillMaxWidth(if (isMobile) 0.95f else 0.6f)
             ) {
                 Column(
-                    modifier = Modifier.wrapContentHeight().padding(16.dp),
-                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = stringResource(Res.string.lspl),
-                        fontSize = 24.sp,
+                        fontSize = if (isMobile) 20.sp else 24.sp,
                         fontWeight = FontWeight.SemiBold
                     )
-                    Spacer(Modifier.padding(4.dp))
+                    Spacer(Modifier.height(4.dp))
                     Text(
                         text = stringResource(Res.string.mobile_developer),
-                        fontSize = 24.sp,
+                        fontSize = if (isMobile) 18.sp else 20.sp,
                         color = Color(0xFF2e4053)
                     )
                     Text(
                         text = stringResource(Res.string.experience_year),
-                        fontSize = 24.sp,
+                        fontSize = if (isMobile) 18.sp else 20.sp,
                         color = Color(0xFF2e4053)
                     )
-                    Spacer(Modifier.padding(4.dp))
-                    Text(text = stringResource(Res.string.experience_desc))
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        text = stringResource(Res.string.experience_desc),
+                        fontSize = if (isMobile) 14.sp else 16.sp
+                    )
                 }
             }
         }
     }
 }
+
 
 @Composable
 fun Projects() {
+    BoxWithConstraints(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF17202a))
+            .padding(16.dp)
+    ) {
+        val isMobile = maxWidth < 600.dp
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
+        ) {
+            Text(
+                text = stringResource(Res.string.projects),
+                fontSize = 32.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                textDecoration = TextDecoration.Underline
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            if (isMobile) {
+                Column(verticalArrangement = Arrangement.spacedBy(24.dp)) {
+                    ProjectCard(
+                        title = stringResource(Res.string.pos),
+                        imageRes = Res.drawable.closeup_hands_business_meeting,
+                        summary = stringResource(Res.string.pos_summary)
+                    )
+                    ProjectCard(
+                        title = stringResource(Res.string.spend_smart),
+                        imageRes = Res.drawable.spend_smart,
+                        summary = stringResource(Res.string.spend_smart_summary)
+                    )
+                    ProjectCard(
+                        title = stringResource(Res.string.representative_tracking),
+                        imageRes = Res.drawable.tracking_icon,
+                        summary = stringResource(Res.string.representative_tracking_summary)
+                    )
+                }
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.Top
+                ) {
+                    ProjectCard(
+                        title = stringResource(Res.string.pos),
+                        imageRes = Res.drawable.closeup_hands_business_meeting,
+                        summary = stringResource(Res.string.pos_summary),
+                        modifier = Modifier.weight(1f)
+                    )
+                    ProjectCard(
+                        title = stringResource(Res.string.spend_smart),
+                        imageRes = Res.drawable.spend_smart,
+                        summary = stringResource(Res.string.spend_smart_summary),
+                        modifier = Modifier.weight(1f)
+                    )
+                    ProjectCard(
+                        title = stringResource(Res.string.representative_tracking),
+                        imageRes = Res.drawable.tracking_icon,
+                        summary = stringResource(Res.string.representative_tracking_summary),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+            }
+        }
+    }
+}
+@Composable
+fun ProjectCard(
+    title: String,
+    imageRes: DrawableResource,
+    summary: String,
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        modifier = modifier.padding(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            stringResource(Res.string.projects),
-            fontSize = 32.sp,
+            text = title,
+            fontSize = 24.sp,
             color = Color.White,
-            fontWeight = FontWeight.Bold,
-            textDecoration = TextDecoration.Underline
+            fontWeight = FontWeight.Bold
         )
-        Spacer(modifier = Modifier.padding(16.dp))
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
 
-                Text(
-                    stringResource(Res.string.pos),
-                    fontSize = 24.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-                Image(
-                    painter = painterResource(Res.drawable.closeup_hands_business_meeting),
-                    contentDescription = null,
-                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
-                )
-                Spacer(modifier = Modifier.padding(16.dp))
-                Text(
-                    stringResource(Res.string.pos_summary), color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
-                )
-            }
-            Spacer(modifier = Modifier.padding(8.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    stringResource(Res.string.spend_smart),
-                    fontSize = 24.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-                Image(
-                    painter = painterResource(Res.drawable.spend_smart),
-                    contentDescription = null,
-                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
-                )
-                Spacer(modifier = Modifier.padding(16.dp))
-                Text(
-                    stringResource(Res.string.spend_smart_summary), color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
-                )
-            }
-            Spacer(modifier = Modifier.padding(8.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    stringResource(Res.string.representative_tracking),
-                    fontSize = 24.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-                Image(
-                    painter = painterResource(Res.drawable.tracking_icon),
-                    contentDescription = null,
-                    modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally)
-                )
-                Spacer(modifier = Modifier.padding(16.dp))
-                Text(
-                    stringResource(Res.string.representative_tracking_summary), color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 8.dp)
-                )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Image(
+            painter = painterResource(imageRes),
+            contentDescription = null,
+            modifier = Modifier.size(240.dp)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = summary,
+            color = Color.White,
+            fontSize = 14.sp,
+            modifier = Modifier.padding(horizontal = 8.dp),
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+
+
+@Composable
+fun Contact() {
+    val uriHandler = LocalUriHandler.current
+
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val isMobile = maxWidth < 600.dp
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(if (isMobile) 12.dp else 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = stringResource(Res.string.contact),
+                fontSize = if (isMobile) 24.sp else 32.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                textDecoration = TextDecoration.Underline
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            if (isMobile) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    ContactIcon(Res.drawable.linkedin) {
+                        uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
+                    }
+                    ContactIcon(Res.drawable.icons8_github_48) {
+                        uriHandler.openUri("https://github.com/aravindhan182")
+                    }
+                    ContactIcon(Res.drawable.icons8_github_64) {
+                        uriHandler.openUri("https://github.com/aravindh2106")
+                    }
+                    ContactIcon(Res.drawable.instagram) {
+                        uriHandler.openUri("https://www.instagram.com/aravindh_azeal?igsh=MW83ejMzN3AwMDJiZg==")
+                    }
+                }
+            } else {
+                // Arrange icons in a row on desktop
+                Row(
+                    modifier = Modifier.width(600.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    ContactIcon(Res.drawable.linkedin) {
+                        uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
+                    }
+                    ContactIcon(Res.drawable.icons8_github_48) {
+                        uriHandler.openUri("https://github.com/aravindhan182")
+                    }
+                    ContactIcon(Res.drawable.icons8_github_64) {
+                        uriHandler.openUri("https://github.com/aravindh2106")
+                    }
+                    ContactIcon(Res.drawable.instagram) {
+                        uriHandler.openUri("https://www.instagram.com/aravindh_azeal?igsh=MW83ejMzN3AwMDJiZg==")
+                    }
+                }
             }
         }
     }
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
-fun Contact() {
-
-    val uriHandler = LocalUriHandler.current
-    Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            stringResource(Res.string.contact),
-            fontSize = 32.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            textDecoration = TextDecoration.Underline
-        )
-        Spacer(modifier = Modifier.padding(16.dp))
-        Row(
-            modifier = Modifier.width(600.dp),
-            verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.Center
-        ) {
-           Image(
-                painter = painterResource(Res.drawable.linkedin),
-                contentDescription = null,
-                modifier = Modifier.size(100.dp).weight(1F).clickable {
-                    uriHandler.openUri("https://www.linkedin.com/in/a-aravindhan-1099a920b/")
-                }
-            )
-
-            Image(
-                painter = painterResource(Res.drawable.icons8_github_48),
-                contentDescription = null,
-                modifier = Modifier.size(100.dp).weight(1F).clickable {
-                    uriHandler.openUri("https://github.com/aravindhan182")
-                }
-            )
-
-            Image(
-                painter = painterResource(Res.drawable.icons8_github_64),
-                contentDescription = null,
-                modifier = Modifier.size(100.dp).weight(1F).clickable {
-                    uriHandler.openUri("https://github.com/aravindh2106")
-                }
-            )
-
-           Image(
-                painter = painterResource(Res.drawable.instagram),
-                contentDescription = null,
-                modifier = Modifier.size(100.dp).weight(1F).clickable {
-                    uriHandler.openUri("https://www.instagram.com/aravindh_azeal?igsh=MW83ejMzN3AwMDJiZg==")
-                }
-            )
-        }
-    }
+fun ContactIcon(drawableRes: DrawableResource, onClick: () -> Unit) {
+    Image(
+        painter = painterResource(drawableRes),
+        contentDescription = null,
+        modifier = Modifier
+            .size(100.dp)
+            .clickable { onClick() }
+    )
 }
 
 fun downloadResume() {
