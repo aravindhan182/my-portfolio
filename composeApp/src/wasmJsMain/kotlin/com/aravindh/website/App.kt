@@ -42,11 +42,6 @@ import aravindhwebsite.composeapp.generated.resources.projects
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 
-fun isAndroid(): String {
-    val platform = getPlatform()
-    return platform.name
-}
-
 @Composable
 fun App() {
     MaterialTheme {
@@ -80,7 +75,7 @@ fun App() {
                 focusRequester.requestFocus()
             }
 
-            HomePage(onNavClick = { section ->
+            HeaderWithMenus(onNavClick = { section ->
                 coroutineScope.launch {
                     sectionPositions[section]?.let { scrollState.animateScrollTo(it) }
                 }
@@ -135,7 +130,6 @@ fun App() {
         }
     }
 }
-
 
 @Composable
 fun Section(name: String, sectionPositions: MutableMap<String, Int>, content: @Composable () -> Unit) {

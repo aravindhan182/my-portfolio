@@ -91,7 +91,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.w3c.dom.HTMLAnchorElement
 
 @Composable
-fun HomePage(onNavClick: (String) -> Unit) {
+fun HeaderWithMenus(onNavClick: (String) -> Unit) {
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
         val isMobile = maxWidth < 600.dp
 
@@ -166,7 +166,6 @@ private fun navItems(): List<String> {
         stringResource(Res.string.contact)
     )
 }
-
 
 @Composable
 fun AnimatedTexts(modifier: Modifier = Modifier, isMobile: Boolean) {
@@ -386,7 +385,6 @@ fun Experience() {
                 fontWeight = FontWeight.Bold,
                 textDecoration = TextDecoration.Underline
             )
-
             Spacer(Modifier.height(16.dp))
 
             Card(
@@ -426,7 +424,6 @@ fun Experience() {
         }
     }
 }
-
 
 @Composable
 fun Projects() {
@@ -500,6 +497,7 @@ fun Projects() {
         }
     }
 }
+
 @Composable
 fun ProjectCard(
     title: String,
@@ -537,7 +535,6 @@ fun ProjectCard(
         )
     }
 }
-
 
 
 @Composable
