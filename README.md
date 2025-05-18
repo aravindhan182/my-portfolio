@@ -1,18 +1,60 @@
-This is a Kotlin Multiplatform project targeting Web.
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+💼 Aravindhan A - Developer Portfolio
 
+Welcome to my personal portfolio project! This application is developed using Kotlin Multiplatform, allowing me to share code between Android and web platforms. As someone experienced in Android development, this project also marks my first step into web application development.
+✨ About the Project
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+This is a multiplatform portfolio showcasing my experience, skills, and selected projects. It aims to demonstrate how Kotlin Multiplatform can be used to create applications targeting both Android and web platforms with a shared codebase.
+🚀 Features
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
+    🧑‍💼 About Me section
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+    📱 Android & web project highlights
+
+    🛠️ Skills & tools section
+
+    🌐 Web support (experimental)
+
+    📫 Contact information
+
+🧪 Technologies Used
+| Platform        | Tech Stack                           |
+|-----------------|--------------------------------------|
+| Shared Code     | Kotlin Multiplatform                 |
+| Android         | Jetpack Compose, Kotlin              |
+| Web             | Kotlin/JS (Kotlin React or HTML DSL) |
+| Build Tools     | Gradle (Kotlin DSL)                  |
+| Version Control | Git, GitHub                          |
+
+    ⚠️ Note: I’m new to web development, so the web version is a work in progress. Feedback and suggestions are always welcome!
+
+Add Android and web UI screenshots if available.
+🛠️ Setup & Run
+
+    Clone this repository
+
+    git clone https://github.com/yourusername/portfolio.git
+
+    Open the project in IntelliJ IDEA or Android Studio with KMP support
+
+    Run the Android app
+
+        Navigate to androidApp and run on emulator or device
+
+    Run the Web app
+
+        Use ./gradlew jsBrowserDevelopmentRun to preview the web version
+
+📬 Contact Me
+
+    Name: Aravindhan A
+
+    Email: aravindhanathmanathan@gmail.com
+
+    LinkedIn: https://www.linkedin.com/in/a-aravindhan-1099a920b/
+
+    GitHub: https://www.github.com/aravindhan182
+
+📝 License
+
+This project is licensed under the MIT License.
